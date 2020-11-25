@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 import TodoItem from './TodoItem';
 import AddTodo from './AddTodo';
@@ -63,18 +69,30 @@ function App(props){
     }, [todos]);
 
     return (
-        <article className="todo-app">
-            <h1>{props.title} {customHookState}</h1>
-            <ul className="todo-list">
-                { todos && todos.map((todo, index) => {
-                    return <TodoItem item={ todo.task } key={ index } done={ false } />
-                }) }
-            </ul>
+        <Router>
+            <nav>
+                <Link to="/test">Visa todos</Link>
+                <Link to="/add/1">Lägg till todos</Link>
+            </nav>
 
-            <p>Senast tillagda: { latestTodo }</p>
+            {/* exact={true} säger att det måste var en exakt matching på url:en*/}
+            <Route path="/">
+                <article className="todo-app">
+                    <h1>{props.title} {customHookState}</h1>
+                    <ul className="todo-list">
+                        { todos && todos.map((todo, index) => {
+                            return <TodoItem item={ todo.task } key={ index } done={ false } />
+                        }) }
+                    </ul>
 
-            <AddTodo updateState={ addTodo } />
-        </article>
+                    <p>Senast tillagda: { latestTodo }</p>
+                </article>
+            </Route>
+            <Route path="/add/:id" render={({ match }) => (
+                <AddTodo updateState={ addTodo } param={ match } />
+            )}>
+            </Route>
+        </Router>
     )
 }
 

@@ -7,12 +7,13 @@ function AddTodo(props) {
         //console.log(event);
         if(event.key == 'Enter') {
             console.log('Todo added: ', event.target.value);
-            props.updateState({ todo: event.target.value })
+            props.updateState({ task: event.target.value })
         }
     }
 
     return (
         <section className="add-todo">
+            <p>Parameter i url:en { props.param.params.id }</p>
             <input className="input-field" placeholder="Skriv in en todo" onKeyUp={handleKeyUp} />
         </section>
     )
