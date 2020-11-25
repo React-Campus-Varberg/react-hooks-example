@@ -1,0 +1,45 @@
+.image {
+    width: 100px;
+}
+
+.todo-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.todo-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.todo-item {
+    cursor: pointer;
+    border: 1px solid #dcdcdc;
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem;
+    margin: 1rem;
+    max-width: 250px;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.add-todo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.input-field {
+    max-width: 250px;
+    width: 100%;
+    padding: 0.5rem;
+
+}
